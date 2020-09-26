@@ -81,6 +81,9 @@ void ItemMover::Init() {
 	CUBE_WIDTH = cubeLayout->SlotWidth;
 	CUBE_HEIGHT = cubeLayout->SlotHeight;
 
+	STASH_WIDTH = 10;
+	LOD_STASH_HEIGHT = 10;
+
 	if (!InventoryItemIds) {
 		InventoryItemIds = new int[INVENTORY_WIDTH * INVENTORY_HEIGHT];
 	}
@@ -403,9 +406,9 @@ void ItemMover::OnRightClick(bool up, int x, int y, bool* block) {
 		source = STORAGE_INVENTORY;
 		sourceX = (x - INVENTORY_LEFT) / CELL_SIZE;
 		sourceY = (y - INVENTORY_TOP) / CELL_SIZE;
-	} else if (stashUI && x >= STASH_LEFT && x <= stashRight && y >= stashTop && y <= stashBottom) {
+	} else if (stashUI && x >= (STASH_LEFT - 2*CELL_SIZE) && x <= stashRight && y >= stashTop && y <= stashBottom) {
 		source = STORAGE_STASH;
-		sourceX = (x - STASH_LEFT) / CELL_SIZE;
+		sourceX = (x - STASH_LEFT + 2*CELL_SIZE) / CELL_SIZE;
 		sourceY = (y - stashTop) / CELL_SIZE;
 	} else if (cubeUI && x >= CUBE_LEFT && x <= cubeRight && y >= CUBE_TOP && y <= cubeBottom) {
 		source = STORAGE_CUBE;
