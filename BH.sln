@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BH", "BH\BH.vcxproj", "{E549AF63-EF8D-4054-A95B-9C4AE6F51029}"
 EndProject
@@ -28,9 +28,11 @@ Global
 		{0C10FFDA-E6F8-4180-BF7D-8A423A171748}.Packaging|Win32.ActiveCfg = Packaging|Win32
 		{0C10FFDA-E6F8-4180-BF7D-8A423A171748}.Packaging|Win32.Build.0 = Packaging|Win32
 		{0C10FFDA-E6F8-4180-BF7D-8A423A171748}.Release|Win32.ActiveCfg = Release|Win32
-		{0C10FFDA-E6F8-4180-BF7D-8A423A171748}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D32D5F9-F933-46ED-B1AD-60248CFF1DB1}
 	EndGlobalSection
 EndGlobal
