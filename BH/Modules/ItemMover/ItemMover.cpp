@@ -81,6 +81,7 @@ void ItemMover::Init() {
 	CUBE_WIDTH = cubeLayout->SlotWidth;
 	CUBE_HEIGHT = cubeLayout->SlotHeight;
 
+	// Hard-code dimensions here
 	STASH_WIDTH = 10;
 	LOD_STASH_HEIGHT = 15;
 	INVENTORY_HEIGHT = 8;
@@ -89,7 +90,8 @@ void ItemMover::Init() {
 	//                                            47 pixels from top in PD2
 	LOD_STASH_TOP = 47;
 	INVENTORY_TOP = 250;
-	// todo: pd2 cube has extra column, 8x4
+	// pd2 cube has extra column, 4x4
+	CUBE_WIDTH = 4;
 
 	if (!InventoryItemIds) {
 		InventoryItemIds = new int[INVENTORY_WIDTH * INVENTORY_HEIGHT];
