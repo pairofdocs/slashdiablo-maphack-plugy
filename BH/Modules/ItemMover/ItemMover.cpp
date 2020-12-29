@@ -82,7 +82,14 @@ void ItemMover::Init() {
 	CUBE_HEIGHT = cubeLayout->SlotHeight;
 
 	STASH_WIDTH = 10;
-	LOD_STASH_HEIGHT = 10;
+	LOD_STASH_HEIGHT = 15;
+	INVENTORY_HEIGHT = 8;
+	// screensizeY is 600,  /2 --> 300 ,  -240 --> 60
+	// or should i modify 'lodStashLayout->Top'  (143 pixels from top of screen in lod. verified in screenshot. 315 for inv)
+	//                                            47 pixels from top in PD2
+	LOD_STASH_TOP = 47;
+	INVENTORY_TOP = 250;
+	// todo: pd2 cube has extra column, 8x4
 
 	if (!InventoryItemIds) {
 		InventoryItemIds = new int[INVENTORY_WIDTH * INVENTORY_HEIGHT];
@@ -315,19 +322,19 @@ void ItemMover::OnLeftClick(bool up, int x, int y, bool* block) {
 	BnetData* pData = (*p_D2LAUNCH_BnData);
 	UnitAny *unit = D2CLIENT_GetPlayerUnit();
 	bool shiftState = ((GetKeyState(VK_LSHIFT) & 0x80) || (GetKeyState(VK_RSHIFT) & 0x80));
-	
+
 	if (up || !pData || !unit || !shiftState || D2CLIENT_GetCursorItem()>0 || (!D2CLIENT_GetUIState(UI_INVENTORY) && !D2CLIENT_GetUIState(UI_STASH) && !D2CLIENT_GetUIState(UI_CUBE) && !D2CLIENT_GetUIState(UI_NPCSHOP))) {
 		return;
 	}
-	
-	Init();	
+
+	Init();
 
 	unidItemId = 0;
 	idBookId = 0;
-	
+
 	int xpac = pData->nCharFlags & PLAYER_TYPE_EXPANSION;
 
-	int mouseX,mouseY;	
+	int mouseX,mouseY;
 
 	for (UnitAny *pItem = unit->pInventory->pFirstItem; pItem; pItem = pItem->pItemData->pNextInvItem) {
 		char *code = D2COMMON_GetItemText(pItem->dwTxtFileNo)->szCode;
@@ -356,7 +363,7 @@ void ItemMover::OnLeftClick(bool up, int x, int y, bool* block) {
 						if ((pItem->pItemData->ItemLocation == STORAGE_STASH && !D2CLIENT_GetUIState(UI_STASH)) || (pItem->pItemData->ItemLocation == STORAGE_CUBE && !D2CLIENT_GetUIState(UI_CUBE))) {
 							return;
 						}
-						unidItemId = pItem->dwUnitId;								
+						unidItemId = pItem->dwUnitId;
 					}
 				}
 			}
